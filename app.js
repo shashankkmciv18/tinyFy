@@ -149,7 +149,7 @@ app.get('/:code',cache,(req,res)=>{
 	})
 })
 
-app.listen(3000,()=>{
+app.listen(PORT,()=>{
 	console.log("running on port 3000");
 });
 
