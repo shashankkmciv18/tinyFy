@@ -39,9 +39,6 @@ const db='mongodb+srv://admin:EF1Boa00LrURyCID@cluster0.omemw.mongodb.net/myFirs
 mongoose.connect(db)
 .then(()=>{console.log("connected")})
 .catch(err=>{console.log(err)});
-// mongoose.connect("mongodb://localhost:27017/small")
-// .then(()=>{console.log("connected")})
-// .catch(err=>{console.log(err)});
 
 const smallS = new mongoose.Schema({
 	url:String,
