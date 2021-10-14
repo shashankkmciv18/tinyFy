@@ -1,0 +1,24 @@
+{
+  "name": "bitly",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start":" node app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "base62": "^2.0.1",
+    "body-parser": "^1.19.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "mongoose": "^6.0.10",
+    "node-fetch": "^3.0.0",
+    "nodemon": "^2.0.13",
+    "redis": "^3.1.2",
+    "zookeeper": "^4.10.0"
+  },
+  "keywords": [],
+  "description": ""
+}

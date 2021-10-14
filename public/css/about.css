@@ -1,0 +1,31 @@
+
+article {
+    float: top;
+    padding: 20px;
+    width: 70%;
+    background-color: #f1f1f1;
+    height: auto; /* only for demonstration, should be removed */
+  }
+  /* Style the list inside the menu */
+nav ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  section::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  footer {
+    background-color: #777;
+    padding: 10px;
+    text-align: center;
+    color: white;
+  }
+  header {
+    padding: None;
+    text-align: center;
+    font-size: 35px;
+    color: white;
+  }  
+  
