@@ -10,8 +10,8 @@ app.use(bp.urlencoded({extended:true}));
 // const fetch=require('node-fetch');
 const redis=require('redis');
 const PORT=process.env.PORT||3000;
-const REDIS_PORT = process.env.REDIS_PORT || 6379;
-const client=redis.createClient(REDIS_PORT);
+// const REDIS_PORT = process.env.REDIS_PORT || 6379;
+// const client=redis.createClient(REDIS_PORT);
 
 
 
@@ -111,26 +111,26 @@ res.render('output',{text:`${cur_url}`})
 });
 
 // Cache middleware
-function cache(req,res,next)
-{
-	const toSearch=req.params.code;
-	client.get(toSearch,(err,result)=>{
-		if(err) res.render('Error');
-		else{
-			if(result!=null)
-			{
+// function cache(req,res,next)
+// {
+// 	const toSearch=req.params.code;
+// 	client.get(toSearch,(err,result)=>{
+// 		if(err) res.render('Error');
+// 		else{
+// 			if(result!=null)
+// 			{
 
-				res.redirect(result);
-				// res.render('output',{text:`${result}`})
+// 				res.redirect(result);
+// 				// res.render('output',{text:`${result}`})
 				
-			}
-			else{
-				next();
-			}
-		}
-	})
-}
-app.get('/:code',cache,(req,res)=>{
+// 			}
+// 			else{
+// 				next();
+// 			}
+// 		}
+// 	})
+// 
+app.get('/:code',(req,res)=>{
 
 	const toSearch=req.params.code;
 	
@@ -140,7 +140,7 @@ app.get('/:code',cache,(req,res)=>{
 			res.render('error');}
 		else{
 			if(result[0]){
-				client.setex(toSearch,3600,result[0].url);
+				// client.setex(toSearch,3600,result[0].url);
 				
 				
 				res.redirect(result[0].url);
