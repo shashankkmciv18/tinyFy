@@ -5,17 +5,8 @@ const bp=require('body-parser');
 app.use(bp.urlencoded({extended:true})); 
 
 
-// redis
 
-// const fetch=require('node-fetch');
-// const redis=require('redis');
 const PORT=process.env.PORT||3000;
-// const REDIS_PORT = process.env.REDIS_PORT || 6379;
-// const client=redis.createClient(REDIS_PORT);
-
-
-
-
 
 
 // static files
@@ -33,7 +24,7 @@ app.set('view engine','ejs');
 
 
 var base62 = require("base62"); 
-var charset = "~9876543210ABCDEFGHIJKLMNOPQRSTU$#@!*abcdefghijklmnopqrstuvw-=";
+var charset = "~9876543210ABCDEFGHIJKLMNOPQRSTU$^@!*abcdefghijklmnopqrstuvw-=";
 base62.setCharacterSet(charset);
 
 const mongoose=require('mongoose');
@@ -110,26 +101,7 @@ app.post('/',(req,res)=>{
 res.render('output',{text:`${cur_url}`})
 });
 
-// Cache middleware
-// function cache(req,res,next)
-// {
-// 	const toSearch=req.params.code;
-// 	client.get(toSearch,(err,result)=>{
-// 		if(err) res.render('Error');
-// 		else{
-// 			if(result!=null)
-// 			{
-
-// 				res.redirect(result);
-// 				// res.render('output',{text:`${result}`})
-				
-// 			}
-// 			else{
-// 				next();
-// 			}
-// 		}
-// 	})
-// 
+ 
 app.get('/:code',(req,res)=>{
 
 	const toSearch=req.params.code;
@@ -140,11 +112,7 @@ app.get('/:code',(req,res)=>{
 			res.render('error');}
 		else{
 			if(result[0]){
-				// client.setex(toSearch,3600,result[0].url);
-				
-				
-				res.redirect(result[0].url);
-				
+				res.redirect(result[0].url);	
 			}else{
 
 				res.render('notfound',{text:`${toSearch}`});
@@ -154,6 +122,6 @@ app.get('/:code',(req,res)=>{
 })
 
 app.listen(PORT,()=>{
-	console.log("running on port 3000");
+	console.log(`Running on port ${PORT}`);
 });
 
