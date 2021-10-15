@@ -25,7 +25,7 @@ app.set('view engine','ejs');
 
 
 var base62 = require("base62"); 
-var charset = "~9876543210ABCDEFGHIJKLMNOPQRSTU$^@!*abcdefghijklmnopqrstuvw-=";
+var charset = process.env.HASHER;
 base62.setCharacterSet(charset);
 
 const mongoose=require('mongoose');
