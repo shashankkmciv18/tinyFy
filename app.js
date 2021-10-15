@@ -97,7 +97,7 @@ app.post('/',(req,res)=>{
 	
 	
 	to_post.save();
-	
+
 res.render('output',{text:`${cur_url}`})
 });
 
