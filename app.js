@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express=require('express');
 const app=express();
 const path=require('path');
@@ -29,9 +30,8 @@ base62.setCharacterSet(charset);
 
 const mongoose=require('mongoose');
 
-const db='mongodb+srv://admin:EF1Boa00LrURyCID@cluster0.omemw.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
 
-mongoose.connect(db)
+mongoose.connect(process.env.DB)
 .then(()=>{console.log("connected")})
 .catch(err=>{console.log(err)});
 
@@ -98,7 +98,8 @@ app.post('/',(req,res)=>{
 	
 	to_post.save();
 
-res.render('output',{text:`${cur_url}`})
+// res.render('output',{text:`${cur_url}`});
+res.render('output',{text:cur_url,domain:process.env.DOMAIN_NAME});
 });
 
  
